@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>selecteurs</title>
+</head>
+<body>
+
+    <h2 id="titre">Mon titre de niveau 2</h2>
+    <div class="avion">AirBus 1</div>
+    <div class="avion">AirBus 2</div>
+    <div class="avion">AirBus 3</div>
+
+    <p id="first">Paragraphe 1</p>
+    <p>Paragraphe 2</p>
+    <p title="Infobulle">Paragraphe 3</p>
+    <p>Paragraphe 4</p>
+    <p>Paragraphe 5</p>
+
+    <script>
+        window.onload = function(){
+
+            // SELECTION NATURELLE D'UN ID
+            var monId = titre;
+            console.log(monId);
+
+            // SELECTION BY ID
+            var monId2 = document.getElementById('titre');
+            console.log(monId2);
+
+            // SELECTION BY CLASSNAME
+            var mesCLasses = document.getElementsByClassName('avion');
+            // je recupère un ensemble : une collection html
+            console.log(mesCLasses);
+            // je peux atteindre un des éléments de la collection grâce à l'indice [1]
+            console.log(mesCLasses[1])
+            // innerHTML definit le contenu de la balise
+            console.log(mesCLasses[1].innerHTML);
+            mesCLasses[1].innerHTML = 'Nouveau contenu';
+
+            // modifier le contenu du h2 pour marquer 'nouveau titre'
+
+            // recuperer dans une variable la selection de mon id
+            // definir un nouveau innerHTML a cette variable
+
+            // var mavar3 = document.getElementById('titre');
+
+            monId.innerHTML = 'Nouveau titre';
+
+
+            // SELECTION BY TAGNAME
+            var mesP = document.getElementsByTagName('p');
+            console.log(mesP);
+            console.log(mesP[1].innerHTML);
+            for(var i = 0; i <mesP.length; i++){
+                console.log(mesP[i].innerHTML);
+                mesP[i].style.backgroundColor ='red';
+                mesP[i].style.marginTop ='75px';
+
+
+            }
+            // liste des mots clées à appliquer avec .style
+            // https://www.w3schools.com/jsref/dom_obj_style.asp
+
+
+            // querySelectorvar
+            var query = document.querySelector('#titre');
+            console.log(query);
+            var query2 = document.querySelectorAll('.avion');
+            console.log(query2[2]);
+
+            // selectionner airbus3 : modifier son contenu en "mon airbus"
+            // de olus stylisez cet airbus pour y appliquer un fond bleu, un texte blanc et gras
+
+            
+            // mesCLasses[2].innerHTML = 'mon airBus';
+            // mesCLasses[2].style.color ='white';
+            // mesCLasses[2].style.backgroundColor ='blue';
+            // mesCLasses[2].style.fontWeight ='bold';
+            // mesCLasses[2].style.marginTop ='50px';
+
+            var query3 = document.querySelectorAll('div.avion');
+            console.log(query3[2].innerHTML);
+            query3[2].innerHTML = 'mon airbus';
+            query3[2].style.backgroundColor = 'blue';
+            query3[2].style.color = '#fff';
+            query3[2].style.fontweight = 'bold';
+            query3[2].style.padding = '20px';
+            query3[2].style.fontSize = '30px';
+
+           
+
+
+
+
+
+
+
+
+
+        } // fin de mon window.onload ne pa effacer
+       
+    </script>
+    
+</body>
+</html>
