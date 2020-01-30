@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Evenements Javascript</title>
+
+    <style>
+        #div1{
+            background-color: red; color: white; padding: 10px;}
+        
+        #div2{
+            background-color: teal; color: #fff; padding: 10px;}
+        
+        #div3{
+            background-color: turquoise; color: #000; padding: 10px;}
+        
+        #div4{
+            background-color: tomato; color: #fff; padding: 10px;}
+       
+        #prenom {width: 50px;}
+        .clicBouton{ background-color: red; color: #fff; width: 70px;}
+
+
+    
+    </style>
+</head>
+<body>
+    <h2 ondlclick="fDiv1();">Click</h2>
+
+    <div id="div1">DIV1</div>
+
+    <h2>DblClick</h2>
+
+    <p id="parag">Paragraphe à cliquer</p>
+
+    <div id="div2">DIV2</div>
+
+    <h2>Survol (mousover mousout)</h2>
+
+    <div id="div3">Div3</div>
+
+    <div id="div4">Div4</div>
+    <h2>Focus</h2>
+    <form>
+        <label for="prenom">Veuillez saisir votre prenom</label>
+        <input id="prenom" type="text" name="prenom">
+        <input type="submit" name="submit" id="submit" value="OK">
+
+    </form>
+
+
+    <script>
+        // addEventListener a besoin de deux arguments : 1- le mot clé correspondant a l'évenèment (ici le click) 2 - la FONCTION exécutée lors de l'evenèment (ici la fonction fDiv) 
+        document.querySelector('#div1').addEventListener('click', fDiv1)
+
+        // document.getElementById('div2').addEventListener('dblclick', fDiv2);
+
+         function fDiv1(){
+            alert('Div1 est cliquée !');
+        }
+
+        // sur ce paragraphe, plutôt qu'appeler une fonction existante nous executons une fonction anonyme au moment du click
+        document.querySelector('#div1').addEventListener('click',function(){alert('par fonction anonyme');});
+        
+        
+        var maDiv2 = document.getElementById('div2');
+        maDiv2.addEventListener('dblclick', fDiv2);
+
+        function fDiv2(){
+            alert('Div2 est double cliquée !');
+        }
+
+        document.querySelector('#div3').addEventListener('mouseover', fDiv3)
+        function fDiv3(){
+            this.innerHTML = "Div3 survolée";
+            this.style.fontSize = "24px";
+        }
+        // je vous laisse réaliser une div4 avec une alerte nous prevenant lorsqu'elle cesse d'etre survolée
+        document.querySelector('#div3').addEventListener('mouseout', fDiv4);
+        function fDiv4() {
+            // this est un mot clé(signifiant 'lelement lui même') qui permet de faire reference à l'element précedemment selectionné, l'element concerné par la fonction.
+                this.innerHTML = "Div4 n\'est plus survolée";
+                this.style.fontSize = "16px";
+        }
+
+        document.querySelector('#prenom').addEventListener('focus',inputFocus);
+        function inputFocus(){
+            // alert('Champ focus');
+            this.style.width = "250px";
+        }
+
+        document.querySelector('#prenom').addEventListener('blur',inputBlur);
+        function inputBlur(){
+            // alert('Champ blur');
+            this.style.width = "50px";
+        }
+
+        document.querySelector('#submit').addEventListener('click', inputSubmit);
+        function inputSubmit(event){
+            event.preventDefault();
+            //alert('formulaire validé')
+           this.classList.add('clicBouton');
+           console.log(document.querySelector('#prenom').value);
+        }
+               
+
+    </script>
+    
+</body>
+</html>

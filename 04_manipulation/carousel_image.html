@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carousel - images</title>
+    <style>
+        img{ width: 300px;}
+    
+    </style>
+</head>
+<body>
+    <div>
+        <img id="monImage" src="imgs/c.jpg" alt="texte alternatif"onclick=" 
+        this.src='img/d.jpg'; this.alt='autre image';">
+        <button id="changerImageTitre">changer d'image et de titre</button>
+        
+    </div>
+    <hr>
+    <div>
+        <img onclick="tourneImage();" src="imgs/a.jpg" alt="texte alternatif" id="carousel">
+    </div>
+    <script>
+        var maSelection =document.getElementById('monImage');
+        document.getElementById('changerImageTitre').addEventListener('click', function(){
+            document.getElementById('monImage').src ="imgs/e.jpg";
+            document.getElementById('monImage').alt='nouveau Texte alternatif';
+        });
+        function tourneImage(){
+            var img = document.getElementById('carousel').getAttribute('src')
+        
+        switch(img) {
+            case 'imgs/a.jpg':
+            document.getElementById('carousel').src='imgs/b.jpg';
+            break;
+              case 'imgs/b.jpg':
+            document.getElementById('carousel').src = 'imgs/c.jpg';
+            break;
+            case 'imgs/c.jpg':
+            document.getElementById('carousel').src = 'imgs/d.jpg';
+            break;
+            case 'imgs/d.jpg':
+            document.getElementById('carousel').src = 'imgs/e.jpg';
+            break;
+            case 'imgs/e.jpg':
+            document.getElementById('carousel').src = 'imgs/a.jpg';
+            break;
+        }
+        }
+       
+
+   
+    </script>
+   
+</body>
+</html>
